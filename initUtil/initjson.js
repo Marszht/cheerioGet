@@ -15,8 +15,7 @@ superagent.get(configInitJson.city)
    .then((db)=>{ 
 	   	const cityLsit =JSON.parse(sres.text).data.cityList;
 	      db.db("cheerio").collection("city").insertMany(cityLsit, function(err, res) {
-	        if (err) throw err;
-	        console.log("文档插入成功");
+	        if (err) throw err; 
 	        db.close(); 
 	      });
 	      },(err)=>{throw err;})
@@ -24,5 +23,50 @@ superagent.get(configInitJson.city)
    	console.log(err);
    }); 
 });
- 
+}
+
+//position
+export.postionList = () =>{ 
+superagent.get(configInitJson.position)
+ .end(function (err, sres) {
+ 	if(err){
+ 		console.log("获取position列表数据失败");
+ 		return ;
+ 	}
+   //TODO将数据存入mongodb中  
+   db
+   .then((db)=>{ 
+	   	const cityLsit =JSON.parse(sres.text).data;
+	      db.db("cheerio").collection("position").insertMany(cityLsit, function(err, res) {
+	        if (err) throw err; 
+	        db.close(); 
+	      });
+	      },(err)=>{throw err;})
+   .catch((err)=>{
+   	console.log(err);
+   }); 
+});
+}
+
+//oldindustry
+exports.oldindustryList =()=>{
+	superagent.get(configInitJson.oldindustry)
+ .end(function (err, sres) {
+ 	if(err){
+ 		console.log("获取oldindustry列表数据失败");
+ 		return ;
+ 	}
+   //TODO将数据存入mongodb中  
+   db
+   .then((db)=>{ 
+	   	const cityLsit =JSON.parse(sres.text).data;
+	      db.db("cheerio").collection("oldindustry").insertMany(cityLsit, function(err, res) {
+	        if (err) throw err; 
+	        db.close(); 
+	      });
+	      },(err)=>{throw err;})
+   .catch((err)=>{
+   	console.log(err);
+   }); 
+});
 }
