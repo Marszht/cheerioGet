@@ -4,7 +4,7 @@ const http=require("https");
 const superagent =require("superagent");
 const configInitJson=require("../config/initjson.js").initjson;
 exports.cityList = () =>{ 
-superagent.get(configInitJson.city)
+ superagent.get(configInitJson.city)
  .end(function (err, sres) {
  	if(err){
  		console.log("获取城市列表数据失败");
@@ -13,7 +13,7 @@ superagent.get(configInitJson.city)
    //TODO将数据存入mongodb中  
    db
    .then((db)=>{ 
-	   	const cityLsit =JSON.parse(sres.text).data.cityList;
+	   	const cityLsit =JSON.parse(sres.text).data.cityList; 
 	      db.db("cheerio").collection("city").insertMany(cityLsit, function(err, res) {
 	        if (err) throw err; 
 	        db.close(); 
@@ -26,7 +26,7 @@ superagent.get(configInitJson.city)
 }
 
 //position
-export.postionList = () =>{ 
+exports.postionList = () =>{ 
 superagent.get(configInitJson.position)
  .end(function (err, sres) {
  	if(err){

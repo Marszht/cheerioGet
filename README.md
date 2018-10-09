@@ -42,9 +42,12 @@ https://www.zhipin.com/job_detail/?query=node.js&scity=100010000&industry=&posit
 ###### 首页搜索框页面搜索链接(四个查询条件，query:查询内容，scity：城市，industry:行业，postion:职能定位，其中query查询职能以及公司)
 > https://www.zhipin.com/job_detail/?query=node.js&scity=101010100&industry=&position=(搜索框加了查询内容node.js)
 > https://www.zhipin.com/job_detail/?query=+&scity=101210100&industry=&position=100114(搜索框没加查询东西)
-> https://www.zhipin.com/c101210100-p100114/h_101210100/?page=2&ka=page-next(点击下一页，page也跟着变)
+> https://www.zhipin.com/c101210100-p100114/h_101210100/?page=2&ka=page-next(点击下一页，page也跟着变,热门职业)。
+> https://www.zhipin.com/c101210100-p100114/h_101210100/?page=2&ka=page-next(点击下一页，page也跟着变,热门职业)。
+
 
 ###### 思路
+获取了三种资源（city,position,industry）之后，组装成如下链接方式，page和ka=page-next的两个分页参数暂时不管，将此链接作为一个大的并发请求，每次多个，直到city以及position全部实现完毕。
 
 
 
