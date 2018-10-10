@@ -32,7 +32,7 @@ https://www.zhipin.com/job_detail/?query=node.js&scity=100010000&industry=&posit
 - 获取首页，城市列表(全国级城市)
 > https://www.zhipin.com/common/data/city.json
 
-- 获取首页职能分类列表，包括一，二，三等数据
+- 获取首页职位类型列表，包括一，二，三等数据
 > https://www.zhipin.com/common/data/position.json
 
 - 获取首页职称分类列表数据（行业）
@@ -48,6 +48,15 @@ https://www.zhipin.com/job_detail/?query=node.js&scity=100010000&industry=&posit
 
 ###### 思路
 获取了三种资源（city,position,industry）之后，组装成如下链接方式，page和ka=page-next的两个分页参数暂时不管，将此链接作为一个大的并发请求，每次多个，直到city以及position全部实现完毕。
+> https://www.zhipin.com/job_detail/?query=&scity=101010100&industry=&position=100202
+
+某次条件查询分页（第二页的查询条件）
+> https://www.zhipin.com/c101010100-p100202/h_101010100/?page=2&ka=page-2
+
+所以我们的查询请求格式如下
+> 'https://www.zhipin.com/c'+city+'-p'+position+'/h_'+city/?page=num&ka=page-num
+
+
 
 
 
