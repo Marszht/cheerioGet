@@ -70,3 +70,39 @@ exports.oldindustryList =()=>{
    }); 
 });
 }
+
+
+
+//取city数据
+exports.getAllCityList =()=>{
+	return new Promise((resolve,reject)=>{
+    db
+   .then((db)=>{  
+	      db.db("cheerio").collection("city"). find({}).toArray(function(err, result){
+	        if (err) throw err; 
+	        resolve(result); 
+	      });
+	      },(err)=>{throw err;})
+   .catch((err)=>{
+   	reject(err);
+   });
+	});
+}
+
+
+
+//取position数据
+exports.getAllPositionList =()=>{ 
+	return new Promise((resolve,reject)=>{
+    db
+   .then((db)=>{  
+	      db.db("cheerio").collection("position"). find({}).toArray(function(err, result){
+	        if (err) throw err; 
+	        resolve(result); 
+	      });
+	      },(err)=>{throw err;})
+   .catch((err)=>{
+   	reject(err);
+   });
+	});
+}
