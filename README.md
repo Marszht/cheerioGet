@@ -14,9 +14,11 @@
 
 #### 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
+本项目采用前后台分离，前台项目在XXX,后台项目在server中
+
+1. 启动后台项目
+> npm i
+> node app.js 或者 npm run start
 
 #### 参与贡献
 
